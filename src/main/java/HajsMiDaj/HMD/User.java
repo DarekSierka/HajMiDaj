@@ -22,9 +22,13 @@ public class User implements Serializable {
 
 	private byte czyPremium;
 
+	private String haslo;
+
 	private String imie;
 
 	private int kasa;
+
+	private String nazwa;
 
 	private String nazwisko;
 
@@ -59,6 +63,14 @@ public class User implements Serializable {
 		this.czyPremium = czyPremium;
 	}
 
+	public String getHaslo() {
+		return this.haslo;
+	}
+
+	public void setHaslo(String haslo) {
+		this.haslo = haslo;
+	}
+
 	public String getImie() {
 		return this.imie;
 	}
@@ -73,6 +85,14 @@ public class User implements Serializable {
 
 	public void setKasa(int kasa) {
 		this.kasa = kasa;
+	}
+
+	public String getNazwa() {
+		return this.nazwa;
+	}
+
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
 	}
 
 	public String getNazwisko() {
