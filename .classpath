@@ -22,5 +22,27 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/asm.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/ehcache-1.2.3.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/hibernate-validator.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/javax.persistence.source_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/javax.persistence_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/jdbc2_0-stdext.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/jta.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/xerces-2.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
