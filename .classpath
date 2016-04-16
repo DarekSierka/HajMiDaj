@@ -44,5 +44,6 @@
 	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/xerces-2.6.2.jar"/>
 	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="D:/Sterowniki hibernate&apos;/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

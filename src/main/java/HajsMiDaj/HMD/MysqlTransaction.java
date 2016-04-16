@@ -9,6 +9,7 @@ public class MysqlTransaction {
 	
 	private  SessionFactory sessionFactory; 
 	private Session session;
+	
 	public MysqlTransaction(){
 		this.sessionFactory =  new AnnotationConfiguration().configure().buildSessionFactory();
 		this.session = sessionFactory.openSession();
@@ -16,6 +17,7 @@ public class MysqlTransaction {
 	}
 	public void finalizeSession(){
 		this.session.getTransaction().commit();
+		this.session.close();
 	}
 	public void save(Object object){
 		this.session.save(object);
@@ -73,7 +75,7 @@ public class MysqlTransaction {
  * 		user.add(nowy);           ----- linikja w której dodajemy 
  * 
  *  
- *  	transaction.save(nowy);   ----- linijak w której dodajemy nie zawsze potrzebna nie wiem dokłądnie jak działa  
+ *  	transaction.save(nowy);   ----- i wysyłamy do bazy delikwenta
  * 
  * 		this.transaction.finalizeSession();
  * 

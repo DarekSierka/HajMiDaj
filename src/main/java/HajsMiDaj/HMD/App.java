@@ -10,5 +10,7 @@ public class App
     {
         System.out.println( "Takie tam teściki!" );
         System.out.println( "Takie tam teściki2!" );
+        new Init();
+        
     }
 }

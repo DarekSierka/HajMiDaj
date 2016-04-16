@@ -23,9 +23,9 @@
    </property>
 
    <!-- List of XML mapping files -->
-    <mapping class="HajsMiDaj.Users"/>
-   	<mapping class="HajsMiDaj.Zaklady"/>
-   	<mapping class="HajsMiDaj.Mecze"/>
+    <mapping class="HajsMiDaj.HMD.User"/>
+   	<mapping class="HajsMiDaj.HMD.Zaklady"/>
+   	<mapping class="HajsMiDaj.HMD.Mecze"/>
     	
 </session-factory>
 </hibernate-configuration>

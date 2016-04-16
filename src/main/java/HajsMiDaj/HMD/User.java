@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
 /**
  * The persistent class for the Users database table.
  * 
@@ -17,15 +18,13 @@ public class User implements Serializable {
 	@Id
 	private int idUsers;
 
-	private byte czyAdmin;
-
-	private byte czyPremium;
-
 	private String haslo;
 
 	private String imie;
 
 	private int kasa;
+
+	private int kto;
 
 	private String nazwa;
 
@@ -44,22 +43,6 @@ public class User implements Serializable {
 
 	public void setIdUsers(int idUsers) {
 		this.idUsers = idUsers;
-	}
-
-	public byte getCzyAdmin() {
-		return this.czyAdmin;
-	}
-
-	public void setCzyAdmin(byte czyAdmin) {
-		this.czyAdmin = czyAdmin;
-	}
-
-	public byte getCzyPremium() {
-		return this.czyPremium;
-	}
-
-	public void setCzyPremium(byte czyPremium) {
-		this.czyPremium = czyPremium;
 	}
 
 	public String getHaslo() {
@@ -84,6 +67,14 @@ public class User implements Serializable {
 
 	public void setKasa(int kasa) {
 		this.kasa = kasa;
+	}
+
+	public int getKto() {
+		return this.kto;
+	}
+
+	public void setKto(int kto) {
+		this.kto = kto;
 	}
 
 	public String getNazwa() {
