@@ -88,5 +88,6 @@ public class Init {
 		transaction.save(nowy);
 		
 		transaction.finalizeSession();
+		System.out.println( "Dodałem usera "+nick );
 	}
 }
