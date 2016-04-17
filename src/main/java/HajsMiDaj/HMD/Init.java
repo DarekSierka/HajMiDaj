@@ -6,8 +6,26 @@ import javax.swing.JOptionPane;
 
 import HajsMiDaj.HMD.MysqlTransaction;
 
-
-
+/**
+ * Klasa zapewniająca wypełnienie bazy danych danymi. 
+ * Init jest klasą, której zadaniem jest początkowe zapełnienie bazy danych informacjami o:
+ * <ul>
+ * <li> użytkownikach </li>
+ * <li> zakładach </li>
+ * <li> rozgrywanych meczach </li>
+ * </ul>
+ * <p>
+ * Obiekt tej klasy wywoływany jest na samym początku działania programu i nie zaleca się używania go pózniejszej edycji bazy danych,
+ * jako że nie zawiera ona funkcji umożliwiających swobodną edycję bazy danych (jak na przykład usuwanie użytkowników lub ich edycja).
+ * Każda operacja wykonywana w obrębie klasy init jest realizowana w ramach transakcji, co zapewnia spójność 
+ * bazy danych. Tym samym klasa zapewnia, że w bazie danych nie wystąpią żadne anomalie(dirty-read, dirty-write etc.).
+ * <p>
+ * 
+ * @author Dariusz Sierka
+ * @author Filip Borowski
+ * @author Bartosz Dylewski
+ *
+ */
 public class Init {
 
 	MysqlTransaction transaction;
@@ -15,10 +33,27 @@ public class Init {
 	private ArrayList<Zaklady> zaklady = new ArrayList<Zaklady>();
 	private ArrayList<Mecze> mecze = new ArrayList<Mecze>();
 	
+	
+	/**
+	 * Konstruktor tworzący instancję klasy Init.
+	 */
 	public Init(){
 		AddUser("Darek","Sierka","daras","darek1");
 	}
 	
+	/**
+	 * AddUser jest metodą klasy Init, dodającą użytkownika do bazy danych. 
+	 * Cała operacja realizowanaj jest w ramach pojedyncznej transakcji. W przypadku istnienia 
+	 * osoby o podanym nicku w bazie danych, metoda wyświetla stosowny komunikat i nie dodaje 
+	 * użytkownika o tej samej nazwie.
+	 * 
+	 * @param imie	imię nowego użytkownika
+	 * @param nazwisko nazwisko nowego użytkownika
+	 * @param nick nazwa nowego użytkownika 
+	 * @param haslo hasło nowego użytkownika
+	 * 
+	 * @see User
+	 */
 	public void AddUser(String imie,String nazwisko,String nick,String haslo){
 		System.out.println( "Takie tam teściki3!" );
 		transaction = new MysqlTransaction();
@@ -53,6 +88,5 @@ public class Init {
 		transaction.save(nowy);
 		
 		transaction.finalizeSession();
-		
 	}
 }
