@@ -15,6 +15,14 @@ import javax.swing.JTextField;
 import HajsMiDaj.HMD.MysqlTransaction;
 
 
+/**
+ * Klasa zarządzająca głównym oknem programu. Głównym zastosowaniem klasy jest ustawienie parametrów okna, tworzenie początkowego 
+ * układu pól, przycisków oraz innych elementów, a także obsługa logowania użytkowników. Posiada dostęp do możliwości klasy JFrame, z której
+ * stanowi rozszerzenie. Na premierę wersji "Sprint #2" przewiduje się znaczną rozbudowę klasy.
+ * 
+ * @see JFrame
+ * @author Darek Sierka, Filip Borowski, Bartosz Dylewski
+ */
 public class Okno extends JFrame{
 
 	private JFrame okno=null;
@@ -32,18 +40,35 @@ public class Okno extends JFrame{
 	private int sizeX=700;
 	private int sizeY=400;
 	
+	/**
+	 * Podstawowy konstruktor klasy.
+	 * Konstruktor odpowiedzialny jest za utworzenie obiektu JFrame (okna programu), a także przycisków i pól tekstowych, widocznych na oknie
+	 * od początku pracy programu.
+	 */
 	public Okno(){
 		
-		okno = new JFrame("E_rejestracja");
+		okno = new JFrame("Zaloguj się!");
 		
 		login=new JButton("Log in");
 		
 		name = new JTextField("Nick");
 		pas = new JTextField("Password");
 		
-		loadOkno();
+		
+		//loadOkno();
+		setParameters();
+		setElements();
+		setLisenners();
+		
+		okno.setLocationRelativeTo(null);
+		okno.setVisible(true);
 	}
 	
+	/**
+	 * Metoda zarządzająca ustawieniami okna, między innymi jego rozmiarami oraz możliwością ich edycji. Jest ona odpowiedzialna za 
+	 * dodawanie nowych elementów do okna programu.
+	 * 
+	 */
 	public void setParameters(){
 		okno.setSize(sizeX, sizeY);
 		okno.setResizable(false);
@@ -56,6 +81,10 @@ public class Okno extends JFrame{
         
 	}
 	
+	/**
+	 * Metoda zarządzająca parametrami elementów obecnych na oknie programu,
+	 * między innymi pól tekstowych, przycisków oraz grafik.
+	 */
 	public void setElements(){
 		
 		int width=120;
@@ -80,6 +109,7 @@ public class Okno extends JFrame{
 		login.addActionListener(new Lisener());
 	}
 	
+/*
 	public void loadOkno(){
 		setParameters();
 		setElements();
@@ -87,13 +117,17 @@ public class Okno extends JFrame{
 		
 		okno.setLocationRelativeTo(null);
 		okno.setVisible(true);
-	}
+	}*/
 	
+	/**
+	 * Metoda zarządzająca logowaniem do systemu. Korzysta ona z pojedynczej transakcji w celu sprawdzenia czy 
+	 * podany użytkownik istnieje w bazie danych oraz czy podane hasło jest prawidłowe.
+	 */
 	public void logging(){
 		String nazwa=name.getText();
 		String haslo=pas.getText();
 		if(nazwa.length()==0||haslo.length()==0){
-			JOptionPane.showMessageDialog(null,"brak wymaganych danych!");
+			JOptionPane.showMessageDialog(null,"Brak wymaganych danych!");
 			return;
 		}
 		System.out.println(nazwa);
@@ -113,7 +147,7 @@ public class Okno extends JFrame{
 			}
 		}
 		if(logUser==null){
-			JOptionPane.showMessageDialog(null,"Błdne hasło lub nazwa użytkownika");
+			JOptionPane.showMessageDialog(null,"Błędne hasło lub nazwa użytkownika");
 			return;
 		}
 		
