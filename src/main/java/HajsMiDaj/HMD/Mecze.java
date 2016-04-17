@@ -17,11 +17,13 @@ public class Mecze implements Serializable {
 	@Id
 	private int idMecze;
 
-	private byte czyZagrany;
+	private int czyZagrany;
 
 	private String nazwadruzyny1;
 
 	private String nazwadruzyny2;
+
+	private int wynik;
 
 	//bi-directional many-to-one association to Zaklady
 	@OneToMany(mappedBy="mecze")
@@ -38,11 +40,11 @@ public class Mecze implements Serializable {
 		this.idMecze = idMecze;
 	}
 
-	public byte getCzyZagrany() {
+	public int getCzyZagrany() {
 		return this.czyZagrany;
 	}
 
-	public void setCzyZagrany(byte czyZagrany) {
+	public void setCzyZagrany(int czyZagrany) {
 		this.czyZagrany = czyZagrany;
 	}
 
@@ -60,6 +62,14 @@ public class Mecze implements Serializable {
 
 	public void setNazwadruzyny2(String nazwadruzyny2) {
 		this.nazwadruzyny2 = nazwadruzyny2;
+	}
+
+	public int getWynik() {
+		return this.wynik;
+	}
+
+	public void setWynik(int wynik) {
+		this.wynik = wynik;
 	}
 
 	public List<Zaklady> getZakladies() {

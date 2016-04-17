@@ -16,18 +16,20 @@ public class Zaklady implements Serializable {
 	@Id
 	private int idtable1;
 
-	private String druzynawygywajaca;
+	private int rezultat;
 
 	private int stawka;
 
-	//bi-directional many-to-one association to Mecze
-	@ManyToOne
-	private Mecze mecze;
+	private int typ;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="Users_idUsers")
 	private User user;
+
+	//bi-directional many-to-one association to Mecze
+	@ManyToOne
+	private Mecze mecze;
 
 	public Zaklady() {
 	}
@@ -40,12 +42,12 @@ public class Zaklady implements Serializable {
 		this.idtable1 = idtable1;
 	}
 
-	public String getDruzynawygywajaca() {
-		return this.druzynawygywajaca;
+	public int getRezultat() {
+		return this.rezultat;
 	}
 
-	public void setDruzynawygywajaca(String druzynawygywajaca) {
-		this.druzynawygywajaca = druzynawygywajaca;
+	public void setRezultat(int rezultat) {
+		this.rezultat = rezultat;
 	}
 
 	public int getStawka() {
@@ -56,12 +58,12 @@ public class Zaklady implements Serializable {
 		this.stawka = stawka;
 	}
 
-	public Mecze getMecze() {
-		return this.mecze;
+	public int getTyp() {
+		return this.typ;
 	}
 
-	public void setMecze(Mecze mecze) {
-		this.mecze = mecze;
+	public void setTyp(int typ) {
+		this.typ = typ;
 	}
 
 	public User getUser() {
@@ -70,6 +72,14 @@ public class Zaklady implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Mecze getMecze() {
+		return this.mecze;
+	}
+
+	public void setMecze(Mecze mecze) {
+		this.mecze = mecze;
 	}
 
 }
