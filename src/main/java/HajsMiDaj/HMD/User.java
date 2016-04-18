@@ -18,6 +18,7 @@ import java.util.List;
  * <li> Typie użytkownika </li>
  * <li> Zakładach użytkownika </li>
  * </ul>
+ * BLAHABLAHLABLAHLHA
  * @see Init
  * @author Darek Sierka, Filip Borowski, Bartosz Dylewski  
  */
