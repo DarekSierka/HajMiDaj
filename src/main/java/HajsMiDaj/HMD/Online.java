@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import HajsMiDaj.HMD.Register.Listener;
 
@@ -17,6 +18,8 @@ public class Online {
 	
 	private JLabel obraz;
 	private JLabel logo;
+	
+	private JTable tabelaRozgrywek;
 	
 	private JButton wyloguj;
 	private JButton navbar1;
@@ -78,6 +81,7 @@ public class Online {
 		navbar2.setBounds(navbarX,navbarY+buttonsHeight,buttonsWidth,buttonsHeight);
 		navbar3.setBounds(navbarX, navbarY+ 2*buttonsHeight, buttonsWidth, buttonsHeight);
 		
+		
 		obraz.add(wyloguj);
 		obraz.add(navbar1);
 		obraz.add(navbar2);
@@ -85,6 +89,33 @@ public class Online {
 		obraz.add(logo);
 		
 		return true;
+	}
+	
+	private void setTabelaRozgrywek(){
+	
+		String[] headers = {
+				"LP",
+				"Nazwa",
+				"Punkty",
+				"Zwyciestwa",
+				"Remisy",
+				"Porazki",
+				"Bilans bramek"
+		};
+		Object[][] data = {
+				{"1","GKS Tarnovia", "56","17","5","2","+31"},
+				{"2","Warta Międzychód", "49","14","7","3","+19"},
+				{"3","Iskra Szydłowo", "48","15","3","6","+24"},
+				{"4","Lubuszanin Trzcianka", "45","13","6","5","+12"},
+				{"5","GKS Dopiewo", "44","14","2","8","+7"},
+				{"6","Sparta Oborniki", "42","12","8","4","+4"}
+		};
+		tabelaRozgrywek = new JTable(data,headers);
+		tabelaRozgrywek.setBounds(250,120, 700, 400);
+		tabelaRozgrywek.setVisible(true);
+		
+		obraz.add(tabelaRozgrywek);
+	
 	}
 	
 	private void wylogujClicked(){
