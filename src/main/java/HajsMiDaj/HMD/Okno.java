@@ -135,9 +135,8 @@ public class Okno extends JFrame{
 	 * Metoda zarządzająca logowaniem do systemu. Korzysta ona z pojedynczej transakcji w celu sprawdzenia czy 
 	 * podany użytkownik istnieje w bazie danych oraz czy podane hasło jest prawidłowe.
 	 */
-	public void logging(){
-		String nazwa=name.getText();
-		String haslo=pas.getText();
+	public void logging(String nazwa,String haslo){
+		
 		if(nazwa.length()==0||haslo.length()==0){
 			JOptionPane.showMessageDialog(null,"Brak wymaganych danych!");
 			return;
@@ -153,6 +152,8 @@ public class Okno extends JFrame{
 		String polecenie = "SELECT idUsers FROM User WHERE nick LIKE '"+nazwa+"' and haslo LIKE '"+haslo+"'";	
 		id = (int) transaction.getSession().createQuery(polecenie).uniqueResult();		
 		logUser = (User) transaction.getSession().get(User.class, id);
+		
+		transaction.finalizeSession();
 		
 		if(logUser==null){
 			JOptionPane.showMessageDialog(null,"Błędne hasło lub nazwa użytkownika");
@@ -173,7 +174,7 @@ class Lisener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
       	
       	if(e.getActionCommand().equals("Log in")){
-      		logging();
+      		logging(name.getText(),pas.getText());
       	}
       	else if(e.getActionCommand().equals("Create account")){
       		register();

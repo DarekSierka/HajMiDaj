@@ -151,7 +151,7 @@ public class Register {
 		
 		MysqlTransaction transaction = new MysqlTransaction();
 		
-		String polecenie = "Select Count(*) from User where nick like '"+nick+"'";
+		String polecenie = "Select Count(*) from User where nazwa like '"+nick+"'";
 		liczba = (long) transaction.getSession().createQuery(polecenie).uniqueResult();
 		
 		if(liczba > 0){
@@ -160,17 +160,12 @@ public class Register {
 			return;
 		}
 		
-		polecenie = "Select MAX(id) from User";
-		
 		User nowy = new User();
 		
-		nowy.setImie("Imie");
-		nowy.setNazwisko("Nazwisko");
 		nowy.setHaslo(pass);
 		nowy.setNazwa(nick);
 		nowy.setKto(0);
 		nowy.setKasa(50);
-		nowy.setIdUsers((int)transaction.getSession().createQuery(polecenie).uniqueResult()+1);
 		
 		transaction.save(nowy);
 		
