@@ -3,6 +3,7 @@ package HajsMiDaj.HMD;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -13,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import HajsMiDaj.HMD.MysqlTransaction;
-
 
 /**
  * Klasa zarządzająca głównym oknem programu. Głównym zastosowaniem klasy jest ustawienie parametrów okna, tworzenie początkowego 
@@ -35,6 +35,7 @@ public class Okno extends JFrame{
 	private JTextField name;
 	private JTextField pas;
 	
+	private JLabel hmd;
 	private JLabel obraz = new JLabel(new ImageIcon("pictures/Fox.png"));
 	
 	private int sizeX=700;
@@ -50,10 +51,12 @@ public class Okno extends JFrame{
 		okno = new JFrame("Zaloguj się!");
 		
 		login=new JButton("Log in");
+		createaccount = new JButton("Create account");
 		
 		name = new JTextField("Nick");
 		pas = new JTextField("Password");
 		
+		hmd = new JLabel();
 		
 		//loadOkno();
 		setParameters();
@@ -87,26 +90,35 @@ public class Okno extends JFrame{
 	 */
 	public void setElements(){
 		
-		int width=120;
+		int width=150;
 		int height = 30;
 		int Y=100;
 		sizeX=sizeX-500;
 		name.setBounds((sizeX/2)-width/2,Y , width,height);
 		pas.setBounds((sizeX/2)-width/2,Y+50 , width,height);
 		login.setBounds((sizeX/2)-width/2,Y+100 , width,height);
+		createaccount.setBounds((sizeX/2)-width/2, Y+150, width,height);
+		
+		hmd.setText("<html><font color='white'> Hajsmidaj&trade </font></html>");
+		hmd.setBounds(475,0,350,60);
+		hmd.setFont(new Font("Times New Roman", Font.BOLD, 38));
 		
 		JLabel o= new JLabel();
+		
 		o.setVisible(false);
 		
 		obraz.add(name);
 		obraz.add(pas);
 		obraz.add(login);
+		obraz.add(createaccount);
+		obraz.add(hmd);
 		obraz.add(o);
 		
 	}
 	
 	public void setLisenners(){
 		login.addActionListener(new Lisener());
+		createaccount.addActionListener(new Lisener());
 	}
 	
 /*
@@ -155,6 +167,10 @@ public class Okno extends JFrame{
 		
 	}
 	
+	public void register(){
+		new Register(okno);
+	}
+	
 	
 	
 class Lisener implements ActionListener{
@@ -162,6 +178,9 @@ class Lisener implements ActionListener{
       	
       	if(e.getActionCommand().equals("Log in")){
       		logging();
+      	}
+      	else if(e.getActionCommand().equals("Create account")){
+      		register();
       	}
       	      	
 	} 

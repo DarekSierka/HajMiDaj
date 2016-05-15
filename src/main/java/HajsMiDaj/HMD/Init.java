@@ -43,7 +43,7 @@ public class Init {
 	
 	/**
 	 * AddUser jest metodą klasy Init, dodającą użytkownika do bazy danych. 
-	 * Cała operacja realizowanaj jest w ramach pojedyncznej transakcji. W przypadku istnienia 
+	 * Cała operacja realizowana jest w ramach pojedyncznej transakcji. W przypadku istnienia 
 	 * osoby o podanym nicku w bazie danych, metoda wyświetla stosowny komunikat i nie dodaje 
 	 * użytkownika o tej samej nazwie.
 	 * 
