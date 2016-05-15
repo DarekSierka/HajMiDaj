@@ -99,6 +99,7 @@ public class Okno extends JFrame{
 		login.setBounds((sizeX/2)-width/2,Y+100 , width,height);
 		createaccount.setBounds((sizeX/2)-width/2, Y+150, width,height);
 		
+		
 		hmd.setText("<html><font color='white'> Hajsmidaj&trade </font></html>");
 		hmd.setBounds(475,0,350,60);
 		hmd.setFont(new Font("Times New Roman", Font.BOLD, 38));

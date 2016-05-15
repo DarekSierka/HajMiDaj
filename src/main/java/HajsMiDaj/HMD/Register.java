@@ -148,7 +148,9 @@ public class Register {
 	}
 	
 	private void addUser(String nick,String pass){
+		System.out.println("Kontrola wprowadzania danych zakończona powodzeniem!");
 		
+		//todo 
 	}
 	
 	private void potwierdzClicked(){
@@ -156,7 +158,12 @@ public class Register {
 		if(checkData(nick,pass,pass2)==false)
 			return;
 		else
-			addUser(nick,pass);	
+		{
+			addUser(nick,pass);
+			JOptionPane.showMessageDialog(null,"Konto zostało utworzone. Życzymy miłego użytkowania!");
+			new Okno();
+			okno.dispose();
+		}
 	}
 	
 	private void anulujClicked(){
