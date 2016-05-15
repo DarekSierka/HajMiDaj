@@ -149,8 +149,34 @@ public class Register {
 	
 	private void addUser(String nick,String pass){
 		System.out.println("Kontrola wprowadzania danych zakończona powodzeniem!");
+		long liczba = 0;
 		
-		//todo 
+		MysqlTransaction transaction = new MysqlTransaction();
+		
+		String polecenie = "Select Count(*) from User where nick like '"+nick+"'";
+		liczba = (long) transaction.getSession().createQuery(polecenie).uniqueResult();
+		
+		if(liczba > 0){
+			JOptionPane.showMessageDialog(null,"Istnieje osoba o padanym niku!");
+			transaction.finalizeSession();
+			return;
+		}
+		
+		polecenie = "Select MAX(id) from User";
+		
+		User nowy = new User();
+		
+		nowy.setImie("Imie");
+		nowy.setNazwisko("Nazwisko");
+		nowy.setHaslo(pass);
+		nowy.setNazwa(nick);
+		nowy.setKto(0);
+		nowy.setKasa(50);
+		nowy.setIdUsers((int)transaction.getSession().createQuery(polecenie).uniqueResult()+1);
+		
+		transaction.save(nowy);
+		
+		transaction.finalizeSession();
 	}
 	
 	private void potwierdzClicked(){
