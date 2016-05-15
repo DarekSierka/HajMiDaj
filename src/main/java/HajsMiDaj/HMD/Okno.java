@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import HajsMiDaj.HMD.MysqlTransaction;
-
 /**
  * Klasa zarządzająca głównym oknem programu. Głównym zastosowaniem klasy jest ustawienie parametrów okna, tworzenie początkowego 
  * układu pól, przycisków oraz innych elementów, a także obsługa logowania użytkowników. Posiada dostęp do możliwości klasy JFrame, z której
@@ -148,17 +147,13 @@ public class Okno extends JFrame{
 		
 		transaction = new MysqlTransaction();
 		
-		ArrayList<User> user = new ArrayList<User>();
-		user= (ArrayList<User>)transaction.getSession().createCriteria(User.class).list();
-		
+		int id=0;
 		User logUser=null;
 		
-		for(User u:user){
-			if(nazwa.equals(u.getNazwa())&&haslo.equals(u.getHaslo())){
-				logUser=u;
-				break;
-			}
-		}
+		String polecenie = "SELECT idUsers FROM User WHERE nick LIKE '"+nazwa+"' and haslo LIKE '"+haslo+"'";	
+		id = (int) transaction.getSession().createQuery(polecenie).uniqueResult();		
+		logUser = (User) transaction.getSession().get(User.class, id);
+		
 		if(logUser==null){
 			JOptionPane.showMessageDialog(null,"Błędne hasło lub nazwa użytkownika");
 			return;

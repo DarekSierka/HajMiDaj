@@ -36,9 +36,7 @@ public class Register {
 	
 	public Register(JFrame o){
 		o.dispose();
-		
-		
-		
+				
 		nickname = new JTextField();
 		password = new JTextField();
 		password2 = new JTextField();
@@ -64,7 +62,7 @@ public class Register {
 	
 	}
 	
-	private boolean setParam(){
+	public boolean setParam(){
 		okno.setSize(oknoX,oknoY);
 		okno.setResizable(false);
 		okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +74,7 @@ public class Register {
 		return true;
 	}
 	
-	private boolean setForm(){
+	public boolean setForm(){
 		
 		Font czcionka = new Font("Times New Roman", Font.BOLD, 24);
 		int base=50, skok=75,height=25,width=oknoX/2,left=oknoX/4;
@@ -120,34 +118,34 @@ public class Register {
 		return true;
 	}
 	
-	private boolean checkData(String nick,String pass,String pass2){
+	public boolean checkData(String nick,String pass,String pass2){
 		
 		if((nick.length()==0) || (pass.length()==0) || (pass2.length()==0)){
-			JOptionPane.showMessageDialog(null,"Wypełnij wszystkie pola!");
+			showMessage("Wypełnij wszystkie pola!");
 			return false;
 		}
 		if(nick.length()>15 || nick.length()<5){
-			JOptionPane.showMessageDialog(null,"Długość nazwy użytkownika musi się zawierać w przedziale od 5 do 15 znaków!");
+			showMessage("Długość nazwy użytkownika musi się zawierać w przedziale od 5 do 15 znaków!");
 			return false;
 		}
 		String pattern = "^[a-zA-Z0-9]*$";
 		if(!(nick.matches(pattern))){
-			JOptionPane.showMessageDialog(null,"Nazwa użytkownika nie może zawierać znaków specjalnych ani polskich liter!");
+			showMessage("Nazwa użytkownika nie może zawierać znaków specjalnych ani polskich liter!");
 			return false;
 		}
 		if(pass.length()>15 || pass.length()<5){
-			JOptionPane.showMessageDialog(null,"Długość hasła musi się zawierać w przedziale od 5 do 15 znaków!");
+			showMessage("Długość hasła musi się zawierać w przedziale od 5 do 15 znaków!");
 			return false;
 		}
 		
 		if(!(pass.equals(pass2))){
-			JOptionPane.showMessageDialog(null,"Oba hasła muszą się zgadzać!");
+			showMessage("Oba hasła muszą się zgadzać!");
 			return false;
 		}
 		return true;
 	}
 	
-	private void addUser(String nick,String pass){
+	public void addUser(String nick,String pass){
 		System.out.println("Kontrola wprowadzania danych zakończona powodzeniem!");
 		long liczba = 0;
 		
@@ -157,7 +155,7 @@ public class Register {
 		liczba = (long) transaction.getSession().createQuery(polecenie).uniqueResult();
 		
 		if(liczba > 0){
-			JOptionPane.showMessageDialog(null,"Istnieje osoba o padanym niku!");
+			showMessage("Istnieje osoba o padanym niku!");
 			transaction.finalizeSession();
 			return;
 		}
@@ -179,30 +177,34 @@ public class Register {
 		transaction.finalizeSession();
 	}
 	
-	private void potwierdzClicked(){
+	public void potwierdzClicked(){
 		String nick=nickname.getText(), pass=password.getText(), pass2=password2.getText();
 		if(checkData(nick,pass,pass2)==false)
 			return;
 		else
 		{
 			addUser(nick,pass);
-			JOptionPane.showMessageDialog(null,"Konto zostało utworzone. Życzymy miłego użytkowania!");
+			showMessage("Konto zostało utworzone. Życzymy miłego użytkowania!");
 			new Okno();
 			okno.dispose();
 		}
 	}
 	
-	private void anulujClicked(){
+	public void anulujClicked(){
 		new Okno();
 		okno.dispose();
 	}
 	
-	private boolean setListenners(){
+	public boolean setListenners(){
 		potwierdz.addActionListener(new Listener());
 		anuluj.addActionListener(new Listener());
 		return true;
 	}
-		
+
+	public void showMessage(String text){
+		JOptionPane.showMessageDialog(null,text);
+	}
+	
 	class Listener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 	      	
@@ -217,3 +219,4 @@ public class Register {
 	}	
 	
 }
+
