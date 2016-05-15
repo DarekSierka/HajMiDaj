@@ -149,7 +149,7 @@ public class Okno extends JFrame{
 		int id=0;
 		User logUser=null;
 		
-		String polecenie = "SELECT idUsers FROM User WHERE nick LIKE '"+nazwa+"' and haslo LIKE '"+haslo+"'";	
+		String polecenie = "SELECT idUsers FROM User WHERE nazwa LIKE '"+nazwa+"' and haslo LIKE '"+haslo+"'";	
 		id = (int) transaction.getSession().createQuery(polecenie).uniqueResult();		
 		logUser = (User) transaction.getSession().get(User.class, id);
 		
@@ -159,7 +159,7 @@ public class Okno extends JFrame{
 			JOptionPane.showMessageDialog(null,"Błędne hasło lub nazwa użytkownika");
 			return;
 		}
-		
+		System.out.println("Zalogowany");
 		new Online(okno);
 		
 	}
