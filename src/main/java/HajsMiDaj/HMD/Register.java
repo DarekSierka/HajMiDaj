@@ -145,11 +145,9 @@ public class Register {
 		return true;
 	}
 	
-	public void addUser(String nick,String pass){
+	public boolean addUser(String nick, String pass, MysqlTransaction transaction){
 		System.out.println("Kontrola wprowadzania danych zakończona powodzeniem!");
 		long liczba = 0;
-		
-		MysqlTransaction transaction = new MysqlTransaction();
 		
 		String polecenie = "Select Count(*) from User where nazwa like '"+nick+"'";
 		liczba = (long) transaction.getSession().createQuery(polecenie).uniqueResult();
@@ -157,7 +155,7 @@ public class Register {
 		if(liczba > 0){
 			showMessage("Istnieje osoba o padanym niku!");
 			transaction.finalizeSession();
-			return;
+			return false;
 		}
 		
 		User nowy = new User();
@@ -170,6 +168,7 @@ public class Register {
 		transaction.save(nowy);
 		
 		transaction.finalizeSession();
+		return true;
 	}
 	
 	public void potwierdzClicked(){
@@ -178,7 +177,10 @@ public class Register {
 			return;
 		else
 		{
-			addUser(nick,pass);
+			MysqlTransaction transaction = new MysqlTransaction();
+			if(!addUser(nick,pass,transaction))
+				return;
+				
 			showMessage("Konto zostało utworzone. Życzymy miłego użytkowania!");
 			new Okno();
 			okno.dispose();

@@ -1,5 +1,6 @@
 package HajsMiDaj.HMD;
 
+
 import static org.junit.Assert.*;
 
 import javax.swing.JFrame;
@@ -8,13 +9,12 @@ import org.junit.Test;
 
 public class RegisterTest {
 
-public RegisterT obiekt;
+	RegisterT obiekt;
 	
 	@org.junit.Before
 	public void Bef(){
 		obiekt = new RegisterT(new JFrame());
 	}
-	
 	
 	@Test
 	public void testCheckData(){
@@ -61,5 +61,9 @@ public RegisterT obiekt;
 		assertEquals(false, obiekt.checkData(nick, pass, pass));
 		
 	}
-
+	
+	@Test
+	public void testAddUser(){
+		
+	}
 }
