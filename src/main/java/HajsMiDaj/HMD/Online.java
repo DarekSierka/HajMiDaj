@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
 import HajsMiDaj.HMD.Register.Listener;
 
@@ -21,14 +22,21 @@ public class Online {
 	private JLabel obraz;
 	private JLabel logo;
 	
+	JScrollPane tabela;
+	JScrollPane zaklady;
+	
 	private JTable tabelaRozgrywek;
 	private JTable zakladyUzytkownika;
 
-	private JComboBox mecz;
-	private JComboBox typ;
+	private JComboBox mecz = new JComboBox();
+	private JComboBox typ = new JComboBox();
 	private JLabel kurs;
 	private JTextField stawka;
 	private JButton zatwierdz;
+	private JLabel meczLabel;
+	private JLabel typLabel;
+	private JLabel kursLabel;
+	private JLabel stawkaLabel;
 	
 	private JButton wyloguj;
 	private JButton navbar1;
@@ -98,18 +106,41 @@ public class Online {
 		zakladyUzytkownika.setVisible(false);
 		obraz.add(zakladyUzytkownika);
 		
+		tabela = new JScrollPane();
+		zaklady = new JScrollPane();
+		
+		meczLabel = new JLabel("<html><font color='white'> Mecz: </font></html>");
+		typLabel =  new JLabel("<html><font color='white'> Typ: </font></html>");
+		kursLabel = new JLabel("<html><font color='white'> Kurs: </font></html>");
+		stawkaLabel = new JLabel("<html><font color='white'> Stawka: </font></html>");
+		
+		meczLabel.setVisible(false);
+		typLabel.setVisible(false);
+		kursLabel.setVisible(false);
+		stawkaLabel.setVisible(false);
+		
+		meczLabel.setBounds(250,255,55,30);
+		typLabel.setBounds(250,295,55,30);
+		kursLabel.setBounds(250,335,55,30);
+		stawkaLabel.setBounds(250,375,55,30);
+		
+		obraz.add(meczLabel);
+		obraz.add(typLabel);
+		obraz.add(kursLabel);
+		obraz.add(stawkaLabel);
+		
 		kurs = new JLabel();
 		kurs.setVisible(false);
-		kurs.setBounds(255, 355, 150, 30);
+		kurs.setBounds(305, 335, 150, 30);
 		obraz.add(kurs);
 		
 		stawka = new JTextField();
-		stawka.setBounds(255, 415, 150, 30);
+		stawka.setBounds(305, 375, 150, 30);
 		stawka.setVisible(false);
-		obraz.add(typ);
+		obraz.add(stawka);
 		
-		zatwierdz = new JButton();
-		zatwierdz.setBounds(255,475,450,30);
+		zatwierdz = new JButton("Zatwierdz");
+		zatwierdz.setBounds(305,425,450,30);
 		zatwierdz.setVisible(false);
 		obraz.add(zatwierdz);
 		
@@ -131,6 +162,13 @@ public class Online {
 		kurs.setVisible(false);
 		stawka.setVisible(false);
 		zatwierdz.setVisible(false);
+		tabela.setVisible(false);
+		zaklady.setVisible(false);
+		meczLabel.setVisible(false);
+		typLabel.setVisible(false);
+		kursLabel.setVisible(false);
+		stawkaLabel.setVisible(false);
+		System.out.println("Czyszczenie!");
 	}
 	
 	private void wylogujClicked(){
@@ -151,6 +189,9 @@ public class Online {
 		};
 		//do tablicy data trzeba pobrać dane z bazy danych
 		Object[][] data = {
+				{"<html><font color='red'> Gospodarze </font></html>","<html><font color='red'> Goście </font></html>",
+				"<html><font color='red'> Typ </font></html>","<html><font color='red'> Stawka </font></html>",
+				"<html><font color='red'> Kurs </font></html>"},
 				{"GKS Tarnovia","Warta Międzychód", "1","14.00","1.72"},
 				{"Sparta Oborniki","Iskra Szydłowo", "1X","2.00", "1.81"},
 				{"Lubuszanin Trzcianka","GKS Dopiewo", "X2","4.50","2.16"},
@@ -159,6 +200,7 @@ public class Online {
 		zakladyUzytkownika = new JTable(data,headers);
 		zakladyUzytkownika.setBounds(250,120, 700, 400);
 		zakladyUzytkownika.setVisible(true);
+		obraz.add(zakladyUzytkownika);
 	}
 	
 	private void postawZakladClicked(){
@@ -171,7 +213,7 @@ public class Online {
 				 "Mieszko Gniezno - Pelikan Niechanowo"
 		}; 
 		mecz = new JComboBox<String>(data);
-		mecz.setBounds(255,255,150,30);
+		mecz.setBounds(305,255,450,30);
 		mecz.setVisible(true);
 		
 		String[] data2 = {
@@ -182,13 +224,17 @@ public class Online {
 				"2"
 		};
 		typ = new JComboBox<String>(data2);
-		typ.setBounds(255,295,150,30);
-		typ.setVisible(false);
+		typ.setBounds(305,295,150,30);
+		typ.setVisible(true);
 		
-		kurs.setText("");
+		kurs.setText("<html><font color='white'> 1.28 </font></html>");
 		kurs.setVisible(true);
 		stawka.setVisible(true);
 		zatwierdz.setVisible(true);
+		meczLabel.setVisible(true);
+		typLabel.setVisible(true);
+		kursLabel.setVisible(true);
+		stawkaLabel.setVisible(true);
 		obraz.add(mecz);
 		obraz.add(typ);
 	}
@@ -206,6 +252,13 @@ public class Online {
 		};
 		//do tablicy data trzeba dodać dane z bazy danych
 		Object[][] data = {
+				{"<html><font color='red'> Pozycja </font></html>", 
+				 "<html><font color='red'> Nazwa drużyny </font></html>",
+				 "<html><font color='red'> Punkty </font></html>",
+				 "<html><font color='red'> Zwycięstwa </font></html>",
+				 "<html><font color='red'> Remisy </font></html>",
+				 "<html><font color='red'> Porażki </font></html>",
+				 "<html><font color='red'> Bilans bramek </font></html>"},
 				{"1","GKS Tarnovia", "56","17","5","2","+31"},
 				{"2","Warta Międzychód", "49","14","7","3","+19"},
 				{"3","Iskra Szydłowo", "48","15","3","6","+24"},
@@ -216,6 +269,7 @@ public class Online {
 		tabelaRozgrywek = new JTable(data,headers);
 		tabelaRozgrywek.setBounds(250,120, 700, 400);
 		tabelaRozgrywek.setVisible(true);
+		obraz.add(tabelaRozgrywek);
 	}
 	
 	private void zatwierdzClicked(){
@@ -241,7 +295,7 @@ public class Online {
 	      		wylogujClicked();
 	      	else if(e.getActionCommand().equals("Moje zakłady"))
 	      		mojeZakladyClicked();
-	      	else if(e.getActionCommand().equals("Postaw zaklad"))
+	      	else if(e.getActionCommand().equals("Postaw zakład"))
 	      		postawZakladClicked();
 	      	else if(e.getActionCommand().equals("Tabela rozgrywek"))
 	      		tabelaRozgrywekClicked();
