@@ -38,6 +38,23 @@ public class MysqlTransaction {
 			return false;
 		
 	}
+	
+	public User getUserByNickAndPass(String nick,String haslo){
+		int id=-1;
+		
+		String polecenie = "SELECT idUsers FROM User WHERE nazwa LIKE '"+nick+"' and haslo LIKE '"+haslo+"'";	
+		try{
+			id = (int) this.getSession().createQuery(polecenie).uniqueResult();
+		}
+		catch (NullPointerException e ){
+			return null;
+		}
+			
+		System.out.println("Początek");
+		return (User) getSession().get(User.class, id);
+		
+		
+	}
 }
 /*
  * Tą klasą możemy pobrać dane z bazy danych jak to zrobić a następująco 

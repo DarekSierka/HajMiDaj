@@ -145,13 +145,9 @@ public class Okno extends JFrame{
 		System.out.println(haslo);
 		
 		transaction = new MysqlTransaction();
-		
-		int id=0;
 		User logUser=null;
-		
-		String polecenie = "SELECT idUsers FROM User WHERE nazwa LIKE '"+nazwa+"' and haslo LIKE '"+haslo+"'";	
-		id = (int) transaction.getSession().createQuery(polecenie).uniqueResult();		
-		logUser = (User) transaction.getSession().get(User.class, id);
+		System.out.println("Początek");
+		logUser=transaction.getUserByNickAndPass(nazwa, haslo);
 		
 		transaction.finalizeSession();
 		
