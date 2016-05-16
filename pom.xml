@@ -26,6 +26,7 @@
   </reporting>
 
   <properties>
+  	<powermock.version>1.5.1</powermock.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <build>$ java -cp target/HMD-1.0-SNAPSHOT.jar HajsMiDaj.HMD.App</build>
   </properties>
@@ -70,6 +71,18 @@
         </plugins>
     </build>
   <dependencies>
+ 	 <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+   </dependency>
+   <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+   </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

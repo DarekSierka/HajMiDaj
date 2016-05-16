@@ -2,10 +2,12 @@ package HajsMiDaj.HMD;
 
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import javax.swing.JFrame;
 
 import org.junit.Test;
+
 
 public class RegisterTest {
 
@@ -63,7 +65,20 @@ public class RegisterTest {
 	}
 	
 	@Test
-	public void testAddUser(){
+	public void testAddUser() throws Throwable{
+		MysqlTransaction mock = mock(MysqlTransaction.class);
+		when(mock.isUser("daras")).thenReturn(true);
+		
+		assertEquals(true,mock.isUser("daras"));
+	}
+	
+	@Test
+	public void testAddUser2() throws Throwable{
+		
+		MysqlTransaction mock = mock(MysqlTransaction.class);
+		when(mock.isUser(anyString())).thenReturn(false);
+		
+		assertEquals(false,mock.isUser("cokolwiek"));
 		
 	}
 }

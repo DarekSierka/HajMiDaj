@@ -25,6 +25,19 @@ public class MysqlTransaction {
 	public Session getSession(){
 		return this.session;
 	}
+	
+	public boolean isUser(String nick) throws Throwable{
+		long liczba=0;
+
+		String polecenie = "Select Count(*) from User where nazwa like '"+nick+"'";
+		liczba = (long) getSession().createQuery(polecenie).uniqueResult();
+		
+		if(liczba>0)
+			return true;
+		else
+			return false;
+		
+	}
 }
 /*
  * Tą klasą możemy pobrać dane z bazy danych jak to zrobić a następująco 
